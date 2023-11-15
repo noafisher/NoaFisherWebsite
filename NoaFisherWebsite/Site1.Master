@@ -1,0 +1,117 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="Site1.master.cs" Inherits="NoaFisherWebsite.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title>המדריך לטיול המושלם בלונדון</title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+    <style>
+        p{
+            color:black;
+            font-family:Calibri;
+                    font-size:20px;
+
+        }
+
+        h1{
+            color:black;
+            font-family:Microsoft Sans Serif;
+                        text-align:center;
+                                font-size:70px;
+
+        }
+
+        body{
+            background-image:url(london3.jpeg);
+            color:black;
+                    font-size:40px;
+
+        }
+
+        table{
+        color:black;
+        font-family:Calibri;
+        font-size:40px;
+        }
+
+        .main{
+            background-color:white;
+            width:65%;
+           
+        color:black;
+        font-family:Calibri;
+        font-size:40px;
+        opacity:70%;
+        padding:0px;
+        }
+
+        h2{
+            color:black;
+            font-family:Microsoft Sans Serif;
+                        text-align:center;
+                                font-size:50px;
+        }
+        .menu{
+            border:3px solid black;opacity:70%;background-color:white;text-align:center;
+        }
+    </style>
+   
+</head>
+<body dir="rtl">
+ <h1> המדריך לטיול המושלם בלונדון </h1>
+    
+
+    <table align="center" width="1350px" class="menu" >
+        <tr>
+            <td> <a href ="main.aspx"> ראשי</a> </td>
+            <td> <a href ="hotels.aspx"> מקומות לינה </a> </td>
+            <td> <a href ="attractions.aspx"> אטרקציות </a> </td>
+            <td> <a href ="restaurants.aspx"> מסעדות </a> </td>
+        
+          
+       
+
+   
+    <%if (Session["Noa"] == null && Session["user"] == null)
+        {%>
+
+    <td> <a href ="account.aspx"> יצירת חשבון חדש</a></td>
+    <td> <a href="login.aspx"> התחברות </a></td>
+    <%} %>
+   
+    <%if (Session["Noa"] != null)
+        {%>
+        <td> <a href="admin.aspx"> דף ניהול </a></td>
+       <%} %>
+
+    <%if (Session["Noa"] != null)
+        {%>
+             <td> <a href ="logout.aspx"> התנתקות</a> </td>
+       <%} %>
+
+       <%if (Session["user"] != null)
+        {%>
+    <td> <a href ="profile.aspx"> דף פרופיל</a></td>
+    <td> <a href ="logout.aspx"> התנתקות</a> </td> 
+    <td> <a href ="user.aspx"> תמונות</a></td>
+
+    <%} %>
+
+
+
+         </tr>   
+ </table>
+    <br />
+        <table align="center" class="main" cellpadding="15">
+            <tr>
+                <td>
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+            </asp:ContentPlaceHolder>
+                    </td>
+                </tr>
+        </table> 
+ </body> 
+</html>
